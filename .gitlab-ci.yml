@@ -32,9 +32,10 @@ image:
   name:  node:12.18.3
 stages:
    - deploy
+
 task:deploy:
-   stage:deploy
-variables:
+   stage: deploy
+   variables:
    REGION:"us-east-1"
 when: manual
 before_script:
@@ -44,10 +45,4 @@ script:
    - npm install
    - npm run build
    - aws s3 sync  ./build/ s3://reactdemo1
-
-
-        
-
-
-
 
