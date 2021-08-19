@@ -46,7 +46,7 @@ upload to s3:
   script:
     - aws configure set region us-east-1
     - touch foo.txt
-    - aws s3 sync ./build/ s3://reactdemo1
+    - aws s3 sync ./public/ s3://reactdemo1
         
 
 unit-test-job:   # This job runs in the test stage.
