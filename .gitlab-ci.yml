@@ -43,9 +43,10 @@ upload to s3:
   image:
     name: banst/awscli
     entrypoint: [""]
-  before script:
-    npm install
-    npm run build
+
+  before_script:
+   - npm install
+   - npm run build
   script:
    - aws configure set region us-east-1
    - aws s3 sync  ./build/ s3://reactdemo1
