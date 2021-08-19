@@ -39,19 +39,6 @@ build-job:       # This job runs in the build stage, which runs first.
     - echo "Compiling the code..."
     - echo "Compile complete."
 
-upload to s3:
-  image:
-    name: banst/awscli
-    entrypoint: [""]
-
-  before_script:
-   - npm install
-   - npm run build
-  script:
-   - aws configure set region us-east-1
-   - aws s3 sync  ./build/ s3://reactdemo1
-        
-
 unit-test-job:   # This job runs in the test stage.
   stage: test    # It only starts when the job in the build stage completes successfully.
   script:
@@ -67,6 +54,15 @@ lint-test-job:   # This job also runs in the test stage.
 
     - echo "No lint issues found."
 
+upload to s3:
+  image:
+    name: banst/awscli
+    entrypoint: [""]
+
+  script:
+   - aws configure set region us-east-1
+   - aws s3 sync  ./build/ s3://reactdemo1
+   
 deploy-job:      # This job runs in the deploy stage.
   stage: deploy  # It only runs when *both* jobs in the test stage complete successfully.
   script:
