@@ -59,6 +59,10 @@ upload to s3:
     name: banst/awscli
     entrypoint: [""]
 
+  before_script:
+   - apt-get update
+   - apt-get install -y awscli
+   
   script:
    - npm install
    - npm run build
