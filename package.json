@@ -64,8 +64,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "dev": "concurrently \"npm run start\" \"gulp watch\"",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -b master -d build"
+    "predeploy": "npm install",
+    "deploy": "npm run build"
     
     
   },
