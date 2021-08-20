@@ -64,7 +64,7 @@ upload to s3:
   
   script:
    - aws configure set region us-east-1
-   
+   - pip install awscli
    - aws s3 sync  ./build/ s3://reactdemo1
    
 deploy-job:      # This job runs in the deploy stage.
