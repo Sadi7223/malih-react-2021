@@ -40,11 +40,7 @@ build-job:       # This job runs in the build stage, which runs first.
   script:
     - echo "Compiling the code..."
     - echo "Compile complete."
-    - npm install
-    - npm run build
-  artifacts:
-    paths:
-      - build/
+ 
 
 unit-test-job:   # This job runs in the test stage.
   stage: test    # It only starts when the job in the build stage completes successfully.
@@ -65,7 +61,12 @@ upload to s3:
   image:
    name: banst/awscli
    entrypoint: [""]
-   
+  before_script:
+    - npm install
+    - npm run build
+  artifacts:
+    paths:
+    - build/ 
   script:
     - aws configure set region us-east-1
     - aws s3 sync  ./build/ s3://reactdemo1
