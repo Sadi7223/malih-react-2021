@@ -61,15 +61,12 @@ upload to s3:
   image:
    name: banst/awscli
    entrypoint: [""]
-  before_script:
+ 
+  script:
     - npm install
     - npm run build
-  artifacts:
-    paths:
-    - build/ 
-  script:
     - aws configure set region us-east-1
-    - aws s3 sync  ./build/ s3://reactdemo1
+    - aws s3 sync  ./public/ s3://reactdemo1
    
 deploy-job:      # This job runs in the deploy stage.
   stage: deploy  # It only runs when *both* jobs in the test stage complete successfully.
