@@ -58,14 +58,13 @@ lint-test-job:   # This job also runs in the test stage.
 
 upload to s3:
   image:
-    name: banst/awscli
-    entrypoint: [""]
+   name: banst/awscli
+   entrypoint: [""]
  
   
   script:
    - aws configure set region us-east-1
-   - npm install
-   - npm run build
+   
    - aws s3 sync  ./build/ s3://reactdemo1
    
 deploy-job:      # This job runs in the deploy stage.
