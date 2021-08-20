@@ -64,7 +64,6 @@ upload to s3:
     - sudo apt-get install
     - sudo apt-get install -y aws-cli
   
-   
   script:
    - npm install
    - npm run build
