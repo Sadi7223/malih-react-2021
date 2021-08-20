@@ -63,8 +63,7 @@ upload to s3:
    entrypoint: [""]
  
   script:
-    - npm install
-    - npm run build
+    
     - aws configure set region us-east-1
     - aws s3 sync  ./public/ s3://reactdemo1
    
