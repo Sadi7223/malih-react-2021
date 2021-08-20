@@ -65,6 +65,8 @@ upload to s3:
     - aws configure set region us-east-1
     - npm install
     - npm run build
+    
+  after_script:
     - aws s3 sync  ./build/ s3://reactdemo1
    
 deploy-job:      # This job runs in the deploy stage.
