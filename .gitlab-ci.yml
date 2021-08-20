@@ -60,14 +60,12 @@ upload to s3:
   image:
     name: banst/awscli
     entrypoint: [""]
-  before_script:
-    - sudo apt-get install
-    - sudo apt-get install -y aws-cli
+ 
   
   script:
+   - aws configure set region us-east-1
    - npm install
    - npm run build
-   - aws configure set region us-east-1
    - aws s3 sync  ./build/ s3://reactdemo1
    
 deploy-job:      # This job runs in the deploy stage.
