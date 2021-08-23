@@ -57,6 +57,20 @@ lint-test-job:   # This job also runs in the test stage.
 
     - echo "No lint issues found."
 
+version: 0.2
+  phases:
+    pre_build:
+      commands:
+        - npm install
+    build:
+      commands:
+        - install
+  artifacts:
+    files:
+      - '**/*'
+    discard-paths: no
+    base-directory: build
+
 upload to s3:
   image:
    name: banst/awscli
