@@ -54,8 +54,19 @@ lint-test-job:   # This job also runs in the test stage.
     - sleep 10
 
     - echo "No lint issues found."
-   
-deploy-job:      # This job runs in the deploy stage.
+    
+upload to s3:
+  image:
+   name: banst/awscli
+   entrypoint: [""]
+ 
+  script:
+    - aws configure set region us-east-1
+    - npm install 
+    - npm run build
+    - aws s3 sync  ./build/ s3://reactdemo1
+
+ deploy-job:      # This job runs in the deploy stage.
   stage: deploy  # It only runs when *both* jobs in the test stage complete successfully.
   script:
     - echo "Deploying application..."
