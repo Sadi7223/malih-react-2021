@@ -38,11 +38,7 @@ phases:
     commands:
       - npm run build
 
-artifacts:
-  files:
-    - '**/*'
-  discard-paths: no
-  base-directory: build
+
  stages:          # List of stages for jobs, and their order of execution
   - build
   - test
